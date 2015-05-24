@@ -2222,7 +2222,7 @@ S_n(0) = \frac 1 {2\pi} \int\limits_{-\pi}^\pi \frac {\sin (n+ \frac 1 2) t}{\si
 = \frac 1 \pi \int\limits_{-\pi}^\pi \frac{\sin nt} t f(t) dt +
 \frac 1 \pi \int\limits_{-\pi}^\pi g(t) \sin nt f(t) dt +
 \frac 1 {2\pi} \int\limits_{-\pi}^\pi \cos nt f(t) dt = \\
-= \frac 1 {\pi} \int\limits_{-\pi}^{\pi} \frac{\sin nt}{t} f(t) dt + O(1), \text{ где $O(1)\to 0$ при $n\to\infty$}.
+= \frac 1 {\pi} \int\limits_{-\pi}^{\pi} \frac{\sin nt}{t} f(t) dt + o(1), \text{ где $o(1)\to 0$ при $n\to\infty$}.
 \end{multline*}
 Рассмотрим оператор
 $$
@@ -2305,15 +2305,15 @@ $$
 $$
 Поэтому $\|AA\| \leqslant \|A\| \ \|A\| = \|A\|^2$, и аналогично $\|A^n\| \leqslant \|A\|^n \leqslant q^n$ для всех $n$.\\
 
-Введём оператор $S_n = \sum\limits_{k=0}^n (-1)^k A^k$. Тогда
+Введём оператор $S_n = \sum\limits_{k=0}^n A^k$. Тогда
 $$
-(I + A)S_n = (I + A) \sum_{k=0}^n (-1)^k A^k  = I + (-1) ^ n A^{n+1}.
+(I - A)S_n = (I - A) \sum_{k=0}^n A^k  = I - A^{n+1}.
 $$
-Но $A^{n+1} \to 0$ при $n\to\infty$, так как $\|A^{n+1}\| \leqslant \|A\|^{n+1} \leqslant q^{n+1} \to 0$ при $n\to\infty$ в силу $q < 1$. Следовательно, существует обратный оператор $S = (I + A)^{-1} = \sum\limits_{k=0}^\infty (-1)^k A^k$.\\
+Но $A^{n+1} \to 0$ при $n\to\infty$, так как $\|A^{n+1}\| \leqslant \|A\|^{n+1} \leqslant q^{n+1} \to 0$ при $n\to\infty$ в силу $q < 1$. Следовательно, существует обратный оператор $S = (I - A)^{-1} = \sum\limits_{k=0}^\infty A^k$.\\
 
 Легко  заметить, что оператор $S$ является линейным. Кроме того, он является ограниченным:
 $$
-\|S\| = \left\| \sum_{k=0}^\infty (-1)^k A^k \right\| \leqslant \sum_{k=0}^\infty \|A^k\| \leqslant \sum_{k=0}^\infty \|A\|^k \leqslant \sum_{k=0}^\infty q^k = \frac 1 {1 - q}. \quad \Box
+\|S\| = \left\| \sum_{k=0}^\infty A^k \right\| \leqslant \sum_{k=0}^\infty \|A^k\| \leqslant \sum_{k=0}^\infty \|A\|^k \leqslant \sum_{k=0}^\infty q^k = \frac 1 {1 - q}. \quad \Box
 $$
 
 \textbf{Теорема 3.} Пусть $X$ --- банахово пространство, $A, A^{-1} \in L(X\to X)$ и существует линейный ограниченный оператор $\Delta A$ такой, что $ \|\Delta A\| < \frac 1 {\|A^{-1}\|}$. Тогда оператор $B = A + \Delta A$ имеет обратный оператор $B^{-1}$, причём 
@@ -2362,13 +2362,13 @@ $$
 $$
 \|A^{-1} y^{(k)}\| \leqslant N \|y^{(k)}\|,
 $$
-поэтому все $y^{(k)} \in Y_{n_0}$. Другими словами, любой элемент $y \in Y$ с нормой $\|y\| = r_1$, можно аппроксимировать элементами $y^{(k)} \in Y_{n_0}$ ($y^{(k)} \to y$ при $k \to \infty$). Возьмём теперь произвольный элемент $y \in Y$. Рассмотрим элемент
+поэтому все $y^{(k)} \in Y_{N}$. Другими словами, любой элемент $y \in Y$ с нормой $\|y\| = r_1$, можно аппроксимировать элементами $y^{(k)} \in Y_{N}$ ($y^{(k)} \to y$ при $k \to \infty$). Возьмём теперь произвольный элемент $y \in Y$. Рассмотрим элемент
 $$
 \xi = r_1 \frac y {\|y\|}.
 $$
-Получаем, что $\|\xi\| = r_1$. Поэтому найдётся последовательность $\lbrace \xi^{(k)} \rbrace \subset Y_{n_0}$, сходящаяся к $\xi$. Но тогда последовательность
+Получаем, что $\|\xi\| = r_1$. Поэтому найдётся последовательность $\lbrace \xi^{(k)} \rbrace \subset Y_{N}$, сходящаяся к $\xi$. Но тогда последовательность
 $$
-y^{(k)} = \xi^{(k)} \frac {\|y\|} r_1 \to y.
+y^{(k)} = \xi^{(k)} \frac {\|y\|}{r_1} \to y.
 $$
 При этом
 $$
@@ -2390,7 +2390,7 @@ $$
 $$
 Следовательно,
 $$
-y = \lim_{k\to\infty} \sum_{i = 1}^{\infty} y_i.
+y = \sum_{i = 1}^{\infty} y_i.
 $$
 Положим $x_k = A^{-1} y_k$, тогда
 $$
